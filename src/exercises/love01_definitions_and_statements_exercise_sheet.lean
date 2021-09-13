@@ -21,8 +21,10 @@ be negative are represented by 0. For example:
     `sub 7 2 = 5`
     `sub 2 7 = 0` -/
 
-def sub : ℕ → ℕ → ℕ :=
-sorry
+def sub : ℕ → ℕ → ℕ
+| m nat.zero := m 
+| nat.zero m := 0
+| (nat.succ m) (nat.succ n) := sub m n
 
 /-! 1.2. Check that your function works as expected. -/
 
@@ -117,10 +119,10 @@ def K : α → β → α :=
 λa b, a
 
 def C : (α → β → γ) → β → α → γ :=
-sorry
+λf b a, f a b
 
 def proj_1st : α → α → α :=
-sorry
+λa a, a
 
 /-! Please give a different answer than for `proj_1st`. -/
 
@@ -128,7 +130,7 @@ def proj_2nd : α → α → α :=
 sorry
 
 def some_nonsense : (α → β → γ) → α → (α → γ) → β → γ :=
-sorry
+λf a g b, f a b
 
 /-! 3.2. Show the typing derivation for your definition of `C` above, on paper
 or using ASCII or Unicode art. You might find the characters `–` (to draw
